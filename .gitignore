@@ -1,0 +1,23 @@
+# Environment variables
+.env
+
+# Configuration files with secrets
+config.json
+secrets.json
+settings.yaml
+
+# Authentication keys or certificates
+*.key
+*.pem
+*.crt
+
+# Logs
+*.log
+
+# Local database files
+*.sqlite3
+*.db
+
+# User-specific files
+*.bak
+*.swp
