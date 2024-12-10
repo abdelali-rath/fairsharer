@@ -8,21 +8,26 @@ on:
 
 jobs:
   My-first-CI:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10"]
+    runs-on: ${{ matrix.os }}
     
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: 3.10
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Lint with Ruff
       run: |
-        # ***add your command to run ruff here***
+        ruff .
     - name: Test with pytest
       run: |
         pytest
