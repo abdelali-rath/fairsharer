@@ -20,6 +20,10 @@ def fair_sharer(values, num_iterations, share=0.1):
     n = len(values)
 
     for _ in range(num_iterations):
+
+        if len(set(values)) == 1:
+            break
+
         # highest values position
         max_index = values.index(max(values))
         max_value = values[max_index]
@@ -43,3 +47,8 @@ print(fair_sharer([0, 1000, 800, 0], 1)) # --> [100, 800, 900, 0]
 print("\n")
 print("fair share [0, 1000, 800, 0], 2 :")
 print(fair_sharer([0, 1000, 800, 0], 2)) # --> [100, 890, 720, 90]
+print("\n")
+
+# random
+print("fair share [230, 85, 39, 105], 1 :")
+print(fair_sharer([230, 85, 39, 105], 1)) # --> [184, 108, 39, 128]
